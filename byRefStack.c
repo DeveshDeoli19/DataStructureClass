@@ -1,4 +1,4 @@
-;#include<stdio.h>
+#include<stdio.h>
 #define max 10
 
 void push(int [], int *);
