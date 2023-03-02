@@ -1,8 +1,8 @@
 #include<stdio.h>
 #define max 10
 
-void push(int [], int *);
-void pop(int [], int [], int *, int *);
+void insert(int [], int *);
+void serve(int [], int [], int *, int *);
 void display(int [],int [], int *, int *);
 // void peek(int [],int [], int *, int *);
 
@@ -16,8 +16,8 @@ int main(){
 
 		switch(ch){
 
-			case 1: push(stack, &top);break;
-			case 2: pop(stack,stack2, &top, &top2);break;
+			case 1: insert(stack, &top);break;
+			case 2: serve(stack,stack2, &top, &top2);break;
 			case 3: display(stack,stack2, &top,&top2);break;
 			default: printf("\nInvalid choice\n");break;
 		}
@@ -25,7 +25,7 @@ int main(){
 	return 0;
 }
 
-void push(int stack[], int *top){
+void insert(int stack[], int *top){
 
 	int value;
 	if((*top) == max-1){
@@ -38,7 +38,7 @@ void push(int stack[], int *top){
 	}
 }
 
-void pop(int stack[], int stack2[], int *top, int *top2){
+void serve(int stack[], int stack2[], int *top, int *top2){
 
 	
 	if((*top) == -1 && (*top2) == -1){
