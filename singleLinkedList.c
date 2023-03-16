@@ -15,6 +15,8 @@ node* delete(node *);
 
 void display(node *);
 
+node* reverse(node *);
+
 int main()
 {
     node *head = NULL, *tail = NULL;
@@ -23,8 +25,8 @@ int main()
 
     do
     {
-        printf("\n1.Insert At Right\n2.Insert At Left\n3.Display\n");
-        printf("Enter Choice: ");
+        printf("\n1.Insert At Right\n2.Insert At Left\n3.Display\n4.Reverse\n");
+        printf("\nEnter Choice: ");
         scanf("%d", &ch);
         printf("\n");
 
@@ -40,11 +42,13 @@ int main()
         case 3:
             display(head);
             break;
+        case 4: head = reverse(head);
+            break;
         default:
             printf("\nInvalid choice\n");
             break;
         }
-    } while (ch >= 0 && ch <= 3);
+    } while (ch >= 0 && ch <= 4);
     return 0;
 }
 
@@ -122,4 +126,26 @@ void display(node *head)
         }
         printf("NULL\n\n");
     }
+}
+
+node* reverse(node *head){
+
+    node* pre=NULL,*curr=head,*nxt=NULL;
+
+    if (head == NULL)
+    {
+        printf("\nList is empty\n");
+    }
+
+    else{
+    while(curr != NULL){
+
+        nxt = curr->next;
+        curr->next = pre;
+        pre = curr;
+        curr = nxt;
+    }
+    printf("\nLinked List reversed Successfully\n");
+    }
+    return pre;
 }
