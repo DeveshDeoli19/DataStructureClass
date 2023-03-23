@@ -1,50 +1,60 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 typedef struct List
 {
     int data;
     struct List *next;
 } node;
 
-node* cInsert(node*);
+node *cInsert(node *);
 
-node* display(node*);
+void compute(node *);
 
-int main(){
+void display(node *, int);
 
-    int n=0, ch=0;
-    int i=0;
+int main()
+{
+
+    int n = 0, ch = 0;
+    int i = 0;
     node *last = NULL;
-    printf("\nEnter number of processes: ");scanf("%d",&n);
+    printf("\nEnter number of processes: ");
+    scanf("%d", &n);
 
-    for(i=0; i<n; i++)
+    for (i = 0; i < n; i++)
     {
-        printf("\nBurst Time of P%d Process: ",i);
+        printf("\nBurst Time of P%d Process: ", i);
         last = cInsert(last);
     }
 
-    for(i=0; i<n; i++)
-     last = display(last);
-    return 0;
+    printf("\nProcesses with burst time\n");
+    display(last,n);
+    printf("\n\n");
+    compute(last);
 
+    return 0;
 }
 
-node* cInsert(node* last){
+node *cInsert(node *last)
+{
 
     node *p = NULL;
 
     int val;
 
-    p= (node*)malloc(sizeof(node));
+    p = (node *)malloc(sizeof(node));
 
-    if(p != NULL){
+    if (p != NULL)
+    {
 
-        scanf("%d",&val);
+        scanf("%d", &val);
         p->data = val;
-        if(last == NULL){
+        if (last == NULL)
+        {
             p->next = p;
-        } 
-        else{
+        }
+        else
+        {
             p->next = last->next;
             last->next = p;
         }
@@ -53,25 +63,54 @@ node* cInsert(node* last){
     return last;
 }
 
-node* display(node *last){
-    
-    node* dummy = (node*)malloc(sizeof(node));
+void compute(node *last)
+{
+
+    node *dummy = (node *)malloc(sizeof(node));
 
     dummy->next = last;
 
-    node* temp = dummy;
-    node* f = NULL;
-    while(last->data > 5){
+    node *temp = dummy;
+    node *f = NULL;
 
-        last->data = last->data - 5;
-        printf("%D ->",last->data);
+    while (last->data)
+    {
+        while (last->data > 5)
+        {
+
+            last->data = last->data - 5;
+            printf("%D ->", last->data);
+            last = last->next;
+            temp = temp->next;
+        }
+        // printf("\n");
+        f = last;
+        dummy->next = last->next;
+
+        while (temp->next != last)
+        {
+            temp = temp->next;
+        }
+        if ((last->next) == last)
+        {
+            free(last);
+            printf(" process completed -> ");
+            return;
+        }
+        temp->next = dummy->next;
         last = last->next;
-        temp = temp->next;
+        temp = dummy;
+        free(f);
+        printf(" process completed -> ");
     }
-    printf("\n");
-    f = last;
-    temp -> next = last->next;
-    last = last ->next;
-    free(f);
-    return last;
+}
+
+void display(node *last, int n){
+
+    int i=0;
+    while(i != n){
+        printf("%d -> ",last->data);
+        last = last->next;
+        i++;
+    }
 }
