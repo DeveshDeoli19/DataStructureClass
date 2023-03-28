@@ -27,7 +27,7 @@ int main()
         last = cInsert(last);
     }
 
-    printf("\nDisplaying Processes with burst time\n");
+    printf("\nDisplaying Processes with given burst time\n");
     display(last,n);
     printf("\n\n");
     compute(last);
