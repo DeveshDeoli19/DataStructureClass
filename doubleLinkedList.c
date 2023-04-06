@@ -50,7 +50,8 @@ int main()
             break;
 
         case 5:
-            exit(0); break;
+            exit(0);
+            break;
 
         default:
             printf("\nWrong choice\n");
@@ -61,25 +62,30 @@ int main()
     return 0;
 }
 
-node* insert(node *tail){
+node *insert(node *tail)
+{
 
     node *p = NULL;
     int x;
-    p = (node*) malloc(sizeof(node));
+    p = (node *)malloc(sizeof(node));
 
-    if(p != NULL){
-        printf("Enter data: ");scanf("%d",&x);
+    if (p != NULL)
+    {
+        printf("Enter data: ");
+        scanf("%d", &x);
         p->data = x;
 
-        if(tail == NULL){
+        if (tail == NULL)
+        {
             tail = p;
             tail->pre = NULL;
         }
 
-        else{
+        else
+        {
             tail->next = p;
             p->pre = tail;
-            tail =p;
+            tail = p;
         }
         tail->next = NULL;
     }
@@ -87,14 +93,17 @@ node* insert(node *tail){
     return tail;
 }
 
-void display1(node *head){
+void display1(node *head)
+{
 
-    if(head == NULL)
+    if (head == NULL)
         printf("\nEmpty\n");
 
-    else{
+    else
+    {
         printf("\n\nHead to tail\n\n");
-        while(head != NULL){
+        while (head != NULL)
+        {
 
             printf("%d -> ", head->data);
             head = head->next;
@@ -104,14 +113,17 @@ void display1(node *head){
     printf("\n\n");
 }
 
-void display2(node *tail){
+void display2(node *tail)
+{
 
-    if(tail == NULL)
+    if (tail == NULL)
         printf("\nEmpty\n");
 
-    else{
+    else
+    {
         printf("\n\nTail to head\n\n");
-        while(tail != NULL){
+        while (tail != NULL)
+        {
 
             printf("%d -> ", tail->data);
             tail = tail->pre;
@@ -121,22 +133,26 @@ void display2(node *tail){
     printf("\n\n");
 }
 
-void display3(node *head, node *tail){
+void display3(node *head, node *tail)
+{
 
-    if(tail == NULL)
+    if (tail == NULL)
         printf("\nEmpty\n");
 
-    else{
-        while(head != tail){
+    else
+    {
+        while (head != tail)
+        {
 
             printf("%d -> ", head->data);
             head = head->next;
             tail = tail->pre;
         }
-        while(tail != NULL){
+        while (tail != NULL)
+        {
 
             printf("%d -> ", tail->data);
-            
+
             tail = tail->next;
         }
         printf("NULL");
