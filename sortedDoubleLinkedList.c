@@ -21,8 +21,7 @@ void insert(node **head,
     p->info = val;
     p->next = NULL;
 
-    // If first node to be insetailed in doubly
-    // linked list
+    
     if ((*head) == NULL)
     {
         (*head) = p;
