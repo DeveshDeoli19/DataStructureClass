@@ -11,8 +11,7 @@ typedef struct Node
 }node;
 
 
-void insert(node **head,
-                  node **tail)
+void insert(node **head,node **tail)
 {
 
     node *p = (node*)malloc(sizeof(node));
@@ -82,7 +81,7 @@ int main()
     
     int ch;
     do{
-        printf("\n\n1.Insert\n2.Display\nEnter Choice: ");
+        printf("\n1.Insert\n2.Display\n3.Exit\n\nEnter Choice: ");
         scanf("%d",&ch);
         switch (ch)
         {
@@ -91,6 +90,8 @@ int main()
            
         case 2:  
             display(left);
+            break;
+        case 3: exit(0);
             break;
         default:
             break;
