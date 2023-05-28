@@ -20,7 +20,7 @@ void insert(node **head,node **tail)
     p->info = val;
     p->next = NULL;
 
-    
+    //if it is first node
     if ((*head) == NULL)
     {
         (*head) = p;
@@ -29,7 +29,7 @@ void insert(node **head,node **tail)
         return;
     }
 
-    
+    //if it is smaller than current head
     if ((p->info) < ((*head)->info))
     {
         p->prev = NULL;
@@ -39,7 +39,7 @@ void insert(node **head,node **tail)
         return;
     }
 
-    
+    //if it is greater than current tail
     if ((p->info) > ((*tail)->info))
     {
         p->prev = (*tail);
@@ -48,7 +48,7 @@ void insert(node **head,node **tail)
         return;
     }
 
-    
+    //IF NOT THEN IT LIES BETWEEN HEAD AND TAIL.
     node *temp = (*head)->next;
     while ((temp->info) < (p->info))
         temp = temp->next;
